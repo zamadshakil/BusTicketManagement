@@ -41,10 +41,11 @@ int main() {
 		cin >> route_choice;
 		cout << "Enter the number of tickets you want to buy: " << endl;
 		cin >> num_tickets;
+		int ticket_choice = (route_choice-1);
 		if (num_tickets <= routes[--route_choice].available_seats)
 		{
-			user_routes.push_back({ routes[--route_choice].start, routes[--route_choice].end, routes[--route_choice].start_end_time, routes[--route_choice].fare, routes[--route_choice].available_seats });
-			routes[--route_choice].available_seats = routes[--route_choice].available_seats - 1;
+			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare, routes[ticket_choice].available_seats });
+			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
 			cout << "Your Ticket has been booked successfully" << endl;
 			cout << "Your Ticket Details are:- " << endl;
 			cout << "Route: from  " << user_routes.back().start << " to " << user_routes.back().end << endl;
@@ -71,76 +72,6 @@ int main() {
 	else {
 		cout << "Invalid Choice" << endl;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*string LHR = "Lahore", ISL="Islamabad", KAR="Karachi", MLT="Multan", FAS = "Faisalabad";
-	int a = 10;
-	vector<Routes> routes = {
-		{LHR, ISL, "12:00 am to 05:00 am", 1500},
-		{LHR, KAR, "10:00 am to 05:00 pm", 3000},
-		{LHR, MLT, "11:00 pm to 05:00 am", 2000},
-		{LHR, FAS, "01:00 pm to 05:00 pm", 1000}
-	};
-	cout << routes.size() << endl;
-	for (int i = 0; i < routes.size(); i++) {
-		cout << "Route: " << routes[i].start << endl;
-		cout << "Route: " << routes[i].end << endl;
-		cout << "Time: " << routes[i].start_end_time << endl;
-		cout << "Fare: " << routes[i].fare << endl;
-		cout << endl;
-	}
-	routes.push_back({ ISL, KAR, "12:00 am to 05:00 am", 4000 });
-	cout << routes.size() << endl;
-	for (int i = 0; i < routes.size(); i++) {
-		cout << "Route: " << routes[i].start << endl;
-		cout << "Route: " << routes[i].end << endl;
-		cout << "Time: " << routes[i].start_end_time << endl;
-		cout << "Fare: " << routes[i].fare << endl;
-		cout << endl;
-	}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return 0;
 }
