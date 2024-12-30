@@ -4,17 +4,16 @@ using namespace std;
 
 struct Routes {
 	string start, end, start_end_time;
-	int fare;
+	int fare, available_seats;
 };
 int main() {
 	string LHR = "Lahore", ISL = "Islamabad", KAR = "Karachi", MLT = "Multan", FAS = "Faisalabad";
-	int route_choice;
-
-	vector<Routes> routes = {
-		{LHR, ISL, "12:00 am to 05:00 am", 1500},
-		{LHR, KAR, "10:00 am to 05:00 pm", 3000},
-		{LHR, MLT, "11:00 pm to 05:00 am", 2000},
-		{LHR, FAS, "01:00 pm to 05:00 pm", 1000}
+	int route_choice; 
+	vector<Routes> user_routes, routes = {
+		{LHR, ISL, "12:00 am to 05:00 am", 1500, 30},
+		{LHR, KAR, "10:00 am to 05:00 pm", 3000, 10},
+		{LHR, MLT, "11:00 pm to 05:00 am", 2000, 24},
+		{LHR, FAS, "01:00 pm to 05:00 pm", 1000, 40}
 	};
 	int login_choice;
 	cout << "Enter your choice to Login\n1. Customer(Buy a Tickets)\n2. Admin(Manage Tickets)" << endl;
@@ -27,12 +26,15 @@ int main() {
 			cout << "Route: from  " << routes[i].start << " to " << routes[i].end << endl;
 			cout << "Time: " << routes[i].start_end_time << endl;
 			cout << "Fare: " << routes[i].fare << endl;
+			cout << "Available Seats: " << routes[i].available_seats << endl;
 			cout << endl;
 		}
 
 		cout << "Enter your choice to buy that ticket: " << endl;
 		cin >> route_choice;
-
+		user_routes.push_back(routes[--route_choice]);
+		routes[--route_choice].available_seats = routes[--route_choice].available_seats - 1;
+		cout << "Your Ticket has been booked successfully" << endl;
 
 
 
