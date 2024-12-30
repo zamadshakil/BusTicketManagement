@@ -30,6 +30,7 @@ int main() {
 			cout << endl;
 		}
 
+
 		cout << "Enter your choice to buy that ticket: " << endl;
 		cin >> route_choice;
 		user_routes.push_back(routes[--route_choice]);
