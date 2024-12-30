@@ -29,6 +29,7 @@ int main() {
 			cout << "Fare: " << routes[i].fare << endl;
 			cout << endl;
 		}
+
 		cout << "Enter your choice to buy that ticket: " << endl;
 		cin >> route_choice;
 
