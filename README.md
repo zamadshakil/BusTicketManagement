@@ -1,38 +1,50 @@
-# Bus Ticket Management System
+# Bus Ticket Management System  
 
-This is a simple **Bus Ticket Management System** implemented in C++ as a console-based application. The project demonstrates the use of fundamental programming concepts such as loops, `if-else` conditions, switch cases, arrays, and dynamic data structures like `std::vector`.
-
-## **Project Description**
-
-The Bus Ticket Management System is designed to:
-- Store and manage bus routes along with their travel times and ticket prices.
-- Allow users to dynamically add or remove routes.
-- Provide features such as displaying available routes, booking tickets, and calculating total costs.
-
-This project is developed as part of a programming assignment to apply basic C++ concepts and create a practical solution.
+This project is a simple console-based **Bus Ticket Management System** implemented in C++. It allows customers to book tickets for available bus routes and provides a framework for administrators to manage routes and seat availability.  
 
 ---
 
-## **Features**
+## **Features**  
 
-- **Dynamic Route Management**:
-  - Add new routes.
-  - Remove existing routes.
-  - Display available routes with travel times and prices.
+### **Customer Functionalities**  
+- View available bus routes, including:  
+  - Departure and arrival locations.  
+  - Travel times.  
+  - Ticket fares.  
+  - Available seats.  
+- Book tickets dynamically:  
+  - Validates seat availability before booking.  
+  - Displays detailed ticket information after successful booking.  
+  - Updates available seats for each route after a booking.  
+- Option to reattempt booking if preferred seats are unavailable.  
 
-- **Ticket Booking**:
-  - Select a route to book a ticket.
-  - Calculate and display the total price for a given number of passengers.
-
-- **Data Storage**:
-  - Routes, travel times, and prices are stored dynamically using `std::vector` and `struct`.
+### **Admin Functionalities** *(Under Development)*  
+- Manage bus routes dynamically:  
+  - Add new routes.  
+  - Remove existing routes.  
+  - Update route details (e.g., seat availability, fare).  
+- View all routes with complete details.  
 
 ---
 
-## **Technologies Used**
+## **Technologies Used**  
 
-- **Programming Language**: C++ (Standard C++17)
-- **Libraries**: `<iostream>`, `<vector>`, `<string>`
+- **Language**: C++  
+- **Libraries**:  
+  - `<iostream>` for input/output operations.  
+  - `<vector>` for dynamic storage of routes and user bookings.  
+  - `<string>` for handling textual data like route names and times.  
 
 ---
 
+## **How to Run the Project**  
+
+### **Prerequisites**  
+- A C++ compiler (e.g., GCC, MinGW, or Visual Studio).  
+- Basic knowledge of running console applications.  
+
+### **Steps to Run**  
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/zamadshakil/BusTicketManagement.git  
+   cd BusTicketManagement  
