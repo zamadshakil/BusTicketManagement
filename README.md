@@ -36,16 +36,3 @@ This project is developed as part of a programming assignment to apply basic C++
 
 ---
 
-## **Getting Started**
-
-### **Prerequisites**
-
-- A C++ compiler (e.g., GCC, MinGW, or Visual Studio).
-- Basic understanding of C++ programming.
-
-### **Running the Project**
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/bus-ticket-management.git
-   cd bus-ticket-management
