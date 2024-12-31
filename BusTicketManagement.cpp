@@ -68,6 +68,80 @@ int main() {
 	}
 	else if (login_choice == 2) {
 		cout << "LogedIn as Admin" << endl;
+		again_in_admin:
+		cout<< "These are the available routes : -" << endl;
+		for (int i = 0; i < routes.size(); i++) {
+			int index_choice = i;
+			cout << ++index_choice << ". " << endl;
+			cout << "Route: from  " << routes[i].start << " to " << routes[i].end << endl;
+			cout << "Time: " << routes[i].start_end_time << endl;
+			cout << "Fare: " << routes[i].fare << endl;
+			cout << "Available Seats: " << routes[i].available_seats << endl;
+			cout << endl;
+		}
+		int manage_choice;
+		cout << "Enter your choice to manage that ticket, enter 1 to add more route, 2 to modify existing route and 3 to delete any existing route:  " << endl;
+		cin >> manage_choice;
+
+		if (manage_choice == 1) {
+			Routes new_route;
+			cout << "Enter start location: ";
+			cin >> new_route.start;
+			cout << "Enter end location: ";
+			cin >> new_route.end;
+			cout << "Enter start and end time: ";
+			cin>>new_route.start_end_time;
+			cout << "Enter fare: ";
+			cin >> new_route.fare;
+			cout << "Enter available seats: ";
+			cin >> new_route.available_seats;
+			routes.push_back(new_route);
+			cout << "New route added successfully." << endl;
+			goto again_in_admin;
+		} else if (manage_choice == 2) {
+			int route_index;
+			enter_m_route_again:
+			cout << "Enter the route number to modify: ";
+			cin >> route_index;
+			route_index--;
+			if (route_index >= 0 && route_index < routes.size()) {
+				cout << "Enter new start location: ";
+				cin >> routes[route_index].start;
+				cout << "Enter new end location: ";
+				cin >> routes[route_index].end;
+				cout << "Enter new start and end time: ";
+				cin>> routes[route_index].start_end_time;
+				cout << "Enter new fare: ";
+				cin >> routes[route_index].fare;
+				cout << "Enter new available seats: ";
+				cin >> routes[route_index].available_seats;
+				cout << "Route modified successfully." << endl;
+				goto again_in_admin;
+			} else {
+				cout << "Invalid route number." << endl;
+				goto enter_m_route_again;
+			}
+		} 
+		else if (manage_choice == 3) {
+			int route_index;
+			enter_d_route_again:
+			cout << "Enter the route number to delete: ";
+			cin >> route_index;
+			route_index--;
+			if (route_index >= 0 && route_index < routes.size()) {
+				routes.erase(routes.begin() + route_index);
+				cout << "Route deleted successfully." << endl;
+				goto again_in_admin;
+			} else {
+				cout << "Invalid route number." << endl;
+				goto enter_d_route_again;
+				
+			}
+		} 
+		else {
+			cout << "Invalid choice." << endl;
+			goto again_in_admin;
+		}
 	}
 	else {
 		cout << "Invalid Choice" << endl;
