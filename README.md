@@ -6,6 +6,36 @@ This project is a simple console-based **Bus Ticket Management System** implemen
 
 ## **Features**  
 
+ * @file BusTicketManagement.cpp
+ * @brief This file contains the implementation of a simple bus ticket management system.
+ * 
+ * The system allows customers to buy tickets for various bus routes and allows admins to manage the routes.
+ * 
+ * Structures:
+ * - Routes: Represents a bus route with start and end locations, time, fare, and available seats.
+ * - user_Routes: Represents a user's booked route with start and end locations, time, fare, and seat number.
+ * 
+ * Functions:
+ * - main: The main function that drives the program. It provides options for customers to buy tickets and for admins to manage routes.
+ * 
+ * Customer Flow:
+ * - The customer logs in and views available routes.
+ * - The customer selects a route and the number of tickets to buy.
+ * - If the requested number of tickets is available, the tickets are booked and details are displayed.
+ * - If not, the customer is prompted to book again or exit.
+ * 
+ * Admin Flow:
+ * - The admin logs in and views available routes.
+ * - The admin can add new routes, modify existing routes, or delete routes.
+ * - After performing an action, the admin is returned to the main admin menu.
+ * 
+ * Input:
+ * - User input for login choice, route selection, number of tickets, and admin actions.
+ * 
+ * Output:
+ * - Displays available routes, booking confirmation, and admin actions results.
+
+ 
 ### **Customer Functionalities**  
 - View available bus routes, including:  
   - Departure and arrival locations.  
