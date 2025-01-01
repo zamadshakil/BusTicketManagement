@@ -6,7 +6,7 @@ This project is a simple console-based **Bus Ticket Management System** implemen
 
 ## **Features**  
 
- * @file BusTicketManagement.cpp
+ * @file /BusTicketManagement.cpp/
  * @brief This file contains the implementation of a simple bus ticket management system.
  * 
  * The system allows customers to buy tickets for various bus routes and allows admins to manage the routes.
