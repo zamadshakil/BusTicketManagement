@@ -13,7 +13,7 @@ struct user_Routes {
 };
 int main() {
 	string LHR = "Lahore", ISL = "Islamabad", KAR = "Karachi", MLT = "Multan", FAS = "Faisalabad";
-	int route_choice, num_tickets, book_again;
+	int route_choice, num_Tickets, book_again;
 	vector<Routes> routes = {
 		{LHR, ISL, "12:00 am to 05:00 am", 1500, 30},
 		{LHR, KAR, "10:00 am to 05:00 pm", 3000, 10},
@@ -40,12 +40,12 @@ int main() {
 		cout << "Enter your route choice to buy that ticket: " << endl;
 		cin >> route_choice;
 		cout << "Enter the number of tickets you want to buy: " << endl;
-		cin >> num_tickets;
+		cin >> num_Tickets;
 		int ticket_choice = --route_choice;
-		if (num_tickets <= routes[ticket_choice].available_seats)
+		if (num_Tickets <= routes[ticket_choice].available_seats)
 		{
 			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare });
-			for (int i = 1; i <= num_tickets; i++) {
+			for (int i = 1; i <= num_Tickets; i++) {
 				user_routes.back().num_tickets.push_back(i);
 			}
 			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
@@ -54,10 +54,13 @@ int main() {
 			cout << "Route: from  " << user_routes.back().start << " to " << user_routes.back().end << endl;
 			cout << "Time: " << user_routes.back().start_end_time << endl;
 			cout << "Fare: " << user_routes.back().fare << endl;
-			cout << "Seat Number: " << user_routes.back().seat_num << endl;
+			for (int j = 0; j < num_Tickets; j++)
+			{
+			cout << "Seat Number: " << user_routes.back().num_tickets[j] << endl;
+			}
 		}
 		else {
-			cout << "Sorry!" <<  num_tickets << " Seats are not available for this route" << endl;
+			cout << "Sorry!" <<  num_Tickets << " Seats are not available for this route" << endl;
 			cout << "Available Seats are: " << routes[--route_choice].available_seats << endl;
 			cout << "Do you wanna book any other ticket(with less seats or other route.)\n Then enter 1 to book again and 2 to Exit: ";
 			cin >> book_again;
