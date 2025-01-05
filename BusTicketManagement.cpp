@@ -49,6 +49,7 @@ int main() {
 				user_routes.back().num_tickets.push_back(i);
 			}
 			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
+
 			cout << "Your Ticket has been booked successfully" << endl;
 			cout << "Your Ticket Details are:- " << endl;
 			cout << "Route: from  " << user_routes.back().start << " to " << user_routes.back().end << endl;
@@ -56,8 +57,28 @@ int main() {
 			cout << "Fare: " << user_routes.back().fare << endl;
 			for (int j = 0; j < num_Tickets; j++)
 			{
-			cout << "Seat Number: " << user_routes.back().num_tickets[j] << endl;
+				cout << "Seat Number: " << user_routes.back().num_tickets[j] << endl;
 			}
+
+			cout << "Do you wanna book any other ticket. \n Then enter 1 to book again, 2 to view own Tickets and 3 to exit: ";
+			cin >> book_again;
+			if (book_again == 1) goto bookagain;
+			else if (book_again == 2) {
+				//view own tickets
+				cout << "Your Tickets are:- " << endl;
+				for (int i = 0; i < user_routes.size(); i++) {
+					cout << "Route: from  " << user_routes[i].start << " to " << user_routes[i].end << endl;
+					cout << "Time: " << user_routes[i].start_end_time << endl;
+					cout << "Fare: " << user_routes[i].fare << endl;
+					for (int j = 0; j < user_routes[i].num_tickets.size(); j++)
+					{
+						cout << "Seat Number: " << user_routes[i].num_tickets[j] << endl;
+					}
+				}
+
+
+			}
+				else exit(0);
 		}
 		else {
 			cout << "Sorry!" <<  num_Tickets << " Seats are not available for this route" << endl;
