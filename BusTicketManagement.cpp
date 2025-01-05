@@ -45,11 +45,11 @@ int main() {
 		if (num_Tickets <= routes[ticket_choice].available_seats)
 		{
 			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare });
-			int seat_num = (routes[ticket_choice].available_seats - num_Tickets);
-			for (int i = seat_num; i <= routes[ticket_choice].available_seats; i++) {
+			int upto = routes[ticket_choice].available_seats, seat_num = (routes[ticket_choice].available_seats - num_Tickets + 1 );
+			for (int i = seat_num; i <= upto; i++) {
 				user_routes.back().num_tickets.push_back(i);
 			}
-			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
+			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - num_Tickets;
 
 			cout << "Your Ticket has been booked successfully" << endl;
 			cout << "Your Ticket Details are:- " << endl;
