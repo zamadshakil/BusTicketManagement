@@ -45,8 +45,8 @@ int main() {
 		if (num_Tickets <= routes[ticket_choice].available_seats)
 		{
 			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare });
-			int seat_num = routes[ticket_choice].available_seats - num_Tickets;
-			for (int i = seat_num; i >= routes[ticket_choice].available_seats; i++) {
+			int seat_num = (routes[ticket_choice].available_seats - num_Tickets);
+			for (int i = seat_num; i <= routes[ticket_choice].available_seats; i++) {
 				user_routes.back().num_tickets.push_back(i);
 			}
 			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
