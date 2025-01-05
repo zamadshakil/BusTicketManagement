@@ -45,7 +45,8 @@ int main() {
 		if (num_Tickets <= routes[ticket_choice].available_seats)
 		{
 			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare });
-			for (int i = 1; i <= num_Tickets; i++) {
+			int seat_num = routes[ticket_choice].available_seats - num_Tickets;
+			for (int i = seat_num; i >= routes[ticket_choice].available_seats; i++) {
 				user_routes.back().num_tickets.push_back(i);
 			}
 			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
@@ -55,11 +56,11 @@ int main() {
 			cout << "Route: from  " << user_routes.back().start << " to " << user_routes.back().end << endl;
 			cout << "Time: " << user_routes.back().start_end_time << endl;
 			cout << "Fare: " << user_routes.back().fare << endl;
+			cout << "Seat Number: ";
 			for (int j = 0; j < num_Tickets; j++)
 			{
-				cout << "Seat Number: " << user_routes.back().num_tickets[j] << endl;
+				cout << user_routes.back().num_tickets[j] << ", ";
 			}
-
 			cout << "Do you wanna book any other ticket. \n Then enter 1 to book again, 2 to view own Tickets and 3 to exit: ";
 			cin >> book_again;
 			if (book_again == 1) goto bookagain;
@@ -75,7 +76,6 @@ int main() {
 						cout << "Seat Number: " << user_routes[i].num_tickets[j] << endl;
 					}
 				}
-
 
 			}
 				else exit(0);
