@@ -9,10 +9,11 @@ struct Routes {
 struct user_Routes {
 	string start, end, start_end_time;
 	int fare, seat_num;
+	vector<int> num_tickets;
 };
 int main() {
 	string LHR = "Lahore", ISL = "Islamabad", KAR = "Karachi", MLT = "Multan", FAS = "Faisalabad";
-	int route_choice, num_tickets, book_again; 
+	int route_choice, num_tickets, book_again;
 	vector<Routes> routes = {
 		{LHR, ISL, "12:00 am to 05:00 am", 1500, 30},
 		{LHR, KAR, "10:00 am to 05:00 pm", 3000, 10},
@@ -27,7 +28,7 @@ int main() {
 		cout << "Loged in as Customer\n";
 		bookagain:
 		cout<< "Enter your choice to buy that ticket.\n These are the available routes : -" << endl;
-		for (int i = 0; i < routes.size(); i++) {
+		for (int i = 0; i < routes.size(); i++)  {
 			int index_choice=i;
 			cout << ++index_choice << ". " << endl;
 			cout << "Route: from  " << routes[i].start << " to " << routes[i].end << endl;
@@ -36,15 +37,17 @@ int main() {
 			cout << "Available Seats: " << routes[i].available_seats << endl;
 			cout << endl;
 		}
-
-		cout << "Enter your choice to buy that ticket: " << endl;
+		cout << "Enter your route choice to buy that ticket: " << endl;
 		cin >> route_choice;
 		cout << "Enter the number of tickets you want to buy: " << endl;
 		cin >> num_tickets;
-		int ticket_choice = (route_choice-1);
-		if (num_tickets <= routes[--route_choice].available_seats)
+		int ticket_choice = --route_choice;
+		if (num_tickets <= routes[ticket_choice].available_seats)
 		{
-			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare, routes[ticket_choice].available_seats });
+			user_routes.push_back({ routes[ticket_choice].start, routes[ticket_choice].end, routes[ticket_choice].start_end_time, routes[ticket_choice].fare });
+			for (int i = 1; i <= num_tickets; i++) {
+				user_routes.back().num_tickets.push_back(i);
+			}
 			routes[ticket_choice].available_seats = routes[ticket_choice].available_seats - 1;
 			cout << "Your Ticket has been booked successfully" << endl;
 			cout << "Your Ticket Details are:- " << endl;
@@ -61,10 +64,6 @@ int main() {
 			if (book_again == 1) goto bookagain;
 			else exit(0);
 		}
-
-
-
-
 	}
 	else if (login_choice == 2) {
 		cout << "LogedIn as Admin" << endl;
@@ -147,5 +146,10 @@ int main() {
 		cout << "Invalid Choice" << endl;
 	}
 
+
+
 	return 0;
 }
+
+
+
