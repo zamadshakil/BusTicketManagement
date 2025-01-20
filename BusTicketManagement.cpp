@@ -105,7 +105,9 @@ int main() {
               if(user_routes.size()!=0){
                 cout << "\nYour Booked Tickets:\n";
                 for (int i = 0; i < user_routes.size(); ++i) {
+                    int temp_route_id = i;
                     cout << "\n=========== Ticket Details ===========\n";
+                    cout << "Route ID# " << ++temp_route_id << endl;
                     cout << "Name: " << user_routes[i].name << endl;
                     cout << "Phone: " << user_routes[i].phone << endl;
                     cout << "Route: From " << user_routes[i].start << " to " << user_routes[i].end << endl;
@@ -130,7 +132,7 @@ int main() {
                 cout << "Enter your Ticket ID to cancel: ";
                 cin>>cancel_route;
                 int found = -1;
-                  if(cancel_route<=user_routes.size()){
+                  if(cancel_route>0 && cancel_route<=user_routes.size()){
                 cout << "Ticket cancelled successfully for " << cancel_route << ".\n";
                 --cancel_route;
                 user_routes.erase(user_routes.begin()+cancel_route);
