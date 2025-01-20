@@ -18,7 +18,7 @@ struct UserRoutes {
 
 int main() {
     string LHR = "Lahore", ISL = "Islamabad", KAR = "Karachi", MLT = "Multan", FAS = "Faisalabad";
-    int route_choice, num_tickets;
+    int route_choice, num_tickets, Book_again;
     vector<Routes> routes = {
         {LHR, ISL, "12:00 am to 05:00 am", 1500, 30},
         {LHR, KAR, "10:00 am to 05:00 pm", 3000, 10},
@@ -36,9 +36,9 @@ int main() {
         cout << "Logged in as Customer\n";
     book_again:
         cout << "\nEnter your choice: \n1. Book a Ticket. \n2. View Booked Tickets.\n3. Cancel a Ticket. \n4. Exit\n";
-        cin >> book_again;
+        cin >> Book_again;
 
-        switch (book_again) {
+        switch (Book_again) {
             case 1: {
                 cout << "\nAvailable Routes:\n";
                 for (size_t i = 0; i < routes.size(); ++i) {
@@ -131,32 +131,25 @@ int main() {
                 cin>>cancel_route;
                 int found = -1;
                 --cancel_route;
-                for(int i=0; i<user_routes.size(); i++){
-                  if(user_routes[i]==cancel_route){
-                    found = i;
-                  }
-                }
-              if(found != 1){
+                  if(cancel_route<=user_routes.size()){
                 cout << "Ticket cancelled successfully for " << cancel_route << ".\n";
-                user_routes.erase(--cancel_route);
-                }
-                goto book_again;
-                }
-                else if()
+                user_routes.erase(user_routes.begin()+cancel_route);
+                  }
+                else {
                 cout << "No ticket found for the given details.\n";
-                goto book_again;
             }
-              
+            goto book_again;
+            }
             case 4:
                 exit(0);
-
+                
             default:
                 cout << "Invalid choice. Try again.\n";
                 goto book_again;
         }
-    } else if (login_choice == 2) {
-        cout << "Logged in as Admin" << endl;
-    again_in_admin:
+        } else if (login_choice == 2) {
+            cout << "Logged in as Admin" << endl;
+        again_in_admin:
         int manage_choice;
         cout << "Enter your choice to manage that ticket, enter 1 to add more route, 2 to modify existing route and 3 to delete any existing route:  " << endl;
         cin >> manage_choice;
