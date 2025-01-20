@@ -112,8 +112,8 @@ int main() {
                     cout << "Time: " << user_routes[i].start_end_time << endl;
                     cout << "Fare: " << user_routes[i].fare << " PKR" << endl;
                     cout << "Seats: ";
-                    for (size_t i = 0; i < user_routes[i].seat_numbers.size(); ++i) {
-                        cout << user_routes[i].seat_numbers[i] << (i < user_routes[i].seat_numbers.size() - 1 ? ", " : "\n");
+                    for (int j = 0; j < user_routes[i].seat_numbers.size(); ++j) {
+                        cout << user_routes[i].seat_numbers[j] << (j < user_routes[i].seat_numbers.size() - 1 ? ", " : "\n");
                     }
                     cout << "====================================\n\n";
                 }
@@ -130,9 +130,9 @@ int main() {
                 cout << "Enter your Ticket ID to cancel: ";
                 cin>>cancel_route;
                 int found = -1;
-                --cancel_route;
                   if(cancel_route<=user_routes.size()){
                 cout << "Ticket cancelled successfully for " << cancel_route << ".\n";
+                --cancel_route;
                 user_routes.erase(user_routes.begin()+cancel_route);
                   }
                 else {
