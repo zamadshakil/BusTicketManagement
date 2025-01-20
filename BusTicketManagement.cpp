@@ -153,7 +153,7 @@ int main() {
             cout << "Logged in as Admin" << endl;
         again_in_admin:
         int manage_choice;
-        cout << "Enter your choice to manage that ticket, enter 1 to add more route, 2 to modify existing route and 3 to delete any existing route:  " << endl;
+        cout << "Enter your choice to manage the routes:\n1. Add a new route\n2. View existing routes\n3. Modify existing route\n4. Delete an existing route\n5. Exit\n";
         cin >> manage_choice;
 
         if (manage_choice == 1) {
@@ -173,10 +173,19 @@ int main() {
             cout << "New route added successfully." << endl;
             goto again_in_admin;
         } else if (manage_choice == 2) {
-            cout << "These are the available routes: -" << endl;
+            cout << "These are the existing routes:\n";
+            for (size_t i = 0; i < routes.size(); ++i) {
+                cout << i + 1 << ". Route: From " << routes[i].start << " to " << routes[i].end << endl;
+                cout << "   Time: " << routes[i].start_end_time << endl;
+                cout << "   Fare: " << routes[i].fare << " PKR\n";
+                cout << "   Available Seats: " << routes[i].available_seats << "\n\n";
+            }
+            goto again_in_admin;
+        } else if (manage_choice == 3) {
+            cout << "These are the available routes:\n";
             for (size_t i = 0; i < routes.size(); i++) {
                 cout << i + 1 << ". " << endl;
-                cout << "Route: from  " << routes[i].start << " to " << routes[i].end << endl;
+                cout << "Route: From " << routes[i].start << " to " << routes[i].end << endl;
                 cout << "Time: " << routes[i].start_end_time << endl;
                 cout << "Fare: " << routes[i].fare << endl;
                 cout << "Available Seats: " << routes[i].available_seats << endl;
@@ -206,7 +215,7 @@ int main() {
                 cout << "Invalid route number." << endl;
                 goto enter_m_route_again;
             }
-        } else if (manage_choice == 3) {
+        } else if (manage_choice == 4) {
             int route_index;
         enter_d_route_again:
             cout << "Enter the route number to delete: ";
@@ -220,6 +229,8 @@ int main() {
                 cout << "Invalid route number." << endl;
                 goto enter_d_route_again;
             }
+        } else if (manage_choice == 5) {
+            exit(0);
         } else {
             cout << "Invalid choice." << endl;
             goto again_in_admin;
